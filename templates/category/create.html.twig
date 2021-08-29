@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Category{% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-3">
+    <h2 class="text-center mt-2">CREATE CATEGORY</h2>
+    <div class="col-md-6"></div>
+        {{ form_start (form) }}
+            <div class="form-group">
+                <p class="text-info text-bold"> Category name </p>
+                {{form_widget (form.Name, {'attr': {'class': 'form-control'}})}}
+            </div>
+            <div class="form-group">
+                <p class="text-info text-bold"> Category Description </p>
+                {{form_widget (form.Description, {'attr': {'class': 'form-control'}})}}
+            </div>
+            {# <div class="form-group">
+                <p class="text-info text-bold"> Category Product </p>
+                {{form_widget (form.Category, {'attr': {'class': 'form-control'}})}}
+            </div> #}
+            <div class="form-group">
+                <button class="btn btn-primary mt-3 btn-">CREATE</button>
+            </div>
+        {{ form_end (form)}}
+    
+</div>
+{% endblock %}

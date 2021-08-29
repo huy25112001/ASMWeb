@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product Detail{% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+<a class="btn btn-primary" href="{{ path ("product_list") }}">List Product </a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Description</th>
+                <th scope="col">Product Price</th>
+                <th scope="col">Product Category</th>
+                <th scope="col">Product Image</th>
+                <th scope="col">Add</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">{{ product.name }}</td>
+                <td scope="row">{{ product.description }}</td>
+                <td scope="row">{{ product.price }}</td>
+                <td scope="row">
+                        <a href="{{ path('category_detail', {'id': product.category.id}) }}">
+                        {{ product.category.name }}
+                        <br>
+                </td>
+                <td scope="row">
+                    <img src="{{ asset ('images/products/' ~ product.image) }}"width="100px" height="120px">
+                </td>
+                
+                <td scope="row">
+                    <a class="btn btn-warning" href="{{ path('product_update', {'id': product.id }) }}">Update</a>
+                    <a class="btn btn-danger" href="{{ path('product_delete', {'id': product.id }) }}">Delete</a>
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

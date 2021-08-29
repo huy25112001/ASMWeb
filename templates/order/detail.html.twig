@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order Detail{% endblock %}
+
+{% block body %}
+
+<div class="container mt-3">
+    <table class = "table">
+        <thead>
+            <tr>
+                <th scope="col">Order ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Customer Location</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">{{ order.id }}</td>
+                <td scope="row">
+                {% for a in order.name %}
+                  <a href="{{ path('product_detail', {'id' : a.id }) }}">
+                       {{ a.name }}
+                  </a>
+                  <br>
+                {% endfor %}
+                </td>
+                <td scope="row">{{ order.quantity }}</td>
+                <td scope="row">{{ order.customername }}</td>
+                <td scope="row">{{ order.customeraddress }}</td>
+                <td scope="row">{{ order.phone }}</td>             
+                <td scope="row">
+                <a class="btn btn-danger" href="{{ path ('order_delete', {'id': order.id}) }}"onclick="return confirm('This Infomation will be deleted!')">Delete</a>
+            </tr>
+        </tbody>
+</div>
+{% endblock %}

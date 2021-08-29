@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product Information{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    {% for flash in app.flashes("Success") %}
+        <p class="alert alert-primary"> {{ flash }} </p>
+    {% endfor %}
+    {% for flash in app.flashes("Warning") %}
+        <p class="alert alert-danger"> {{ flash }} </p>
+    {% endfor %}
+</div>
+
+<div class="container mt-3">
+    <a class="btn btn-primary" href="{{ path('product_create') }}">Create Product</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Product ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td scope="row">{{ product.id }}</td>
+                <td scope="row">{{ product.name }}</td>
+                <td scope="row">
+                    <a class="btn btn-info" href="{{ path('product_detail', {'id': product.id }) }}">Detail</a>
+                    <a class="btn btn-warning" href="{{ path('product_update', {'id': product.id }) }}">Update</a>
+                    <a class="btn btn-danger" href="{{ path('product_delete', {'id': product.id }) }}">Delete</a>
+                </td>            
+            </tr>
+        {% endfor %}   
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+

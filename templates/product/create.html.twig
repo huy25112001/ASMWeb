@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Product{% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-3">
+    <h2 class="text-center mt-2">CREATE PRODUCT</h2>
+    <div class="col-md-6"></div>
+        {{ form_start (form) }}
+            <div class="form-group">
+                <p class="text-info text-bold"> Product name </p>
+                {{form_widget (form.Name, {'attr': {'class': 'form-control'}})}}
+            </div>
+            <div class="form-group">
+                <p class="text-info text-bold"> Product Description </p>
+                {{form_widget (form.Description, {'attr': {'class': 'form-control'}})}}
+            </div>
+            <div class="form-group">
+                <p class="text-info text-bold"> Product Price </p>
+                {{form_widget (form.Price, {'attr': {'class': 'form-control'}})}}
+            </div>
+            <div class="form-group">
+                <p class="text-info text-bold"> Category </p>
+                {{form_widget (form.Category, {'attr': {'class': 'form-control'}})}}
+            </div>
+            <div class="form-group">
+                <p class="text-info text-bold"> Product Image </p>
+                {{form_widget (form.Image, {'attr': {'class': 'form-control'}})}}
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary mt-3 btn-">CREATE</button>
+            </div>
+        {{ form_end (form)}}
+    
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order{% endblock %}
+
+{% block body %}
+
+<div class="container mt-3">
+    {% for flash in app.flashes("Success") %}
+        <p class="alert alert-primary"> {{ flash }} </p>
+    {% endfor %}
+    {% for flash in app.flashes("Warning") %}
+        <p class="alert alert-danger"> {{ flash }} </p>
+    {% endfor %}
+</div>
+<div class="container-fluid">
+<a class="btn" href="{{ path ( 'order_create' ) }}">Add New Order</a>
+<table class = "table">
+    <thead>
+        <tr>
+            <th scope="col">Order ID</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for order in orders %}
+        <tr>
+            <td scope="row">{{ order.id}}</td>
+            <td scope="row">{{ order.customername}}</td>
+            <td scope="row">
+                <a class="btn btn-primary" href="{{ path('order_detail', {'id': order.id} )}}">Detail</a>
+                <a class="btn btn-danger" href="{{ path('order_delete', {'id': order.id} )}}"
+                onclick="return confirm('This publisher will be deleted!')">Delete</a>
+        </tr>
+    </tbody>
+    {% endfor %}
+</div>
+{% endblock %}
